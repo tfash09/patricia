@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Space+Mono:400,400i,700,700i');
+    @font-face {
+      font-family: GraphikRegular;
+      src: url(./Graphik-Font-Family/GraphikRegular.otf);
+    }
+
+    *{
+    box-sizing:border-box;
+    font-family: GraphikRegular;
+    font-weight: 500;    
+    font-size: 14.5px;
+    }
+
+    body, html{
+    margin:0;
+    padding:0;
+    height: 100%;
+    width: 100%;
+    }
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: -webkit-flex;
+      -webkit-align-items: center;
+      -webkit-justify-content: center;
+      flex-direction: column;
+      -webkit-flex-direction: column;
+    }   
+
+    .card{
+        background: #131313 url('patricia.png') no-repeat;
+        background-position: -32px -20px;
+        background-size: 90% 125%;        
+        position: relative;
+        height: 270px;
+        width: 450px;
+        border-radius: 25px;
+        border: 2px solid #131313;
+        box-shadow: 0 0 5px #131313;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        padding: 2em 2em 1em 2em;
+        justify-content: space-between;
+        align-content: space-between;
+    }   
+
+    .card .firstChild{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+
+    .card .secondChild{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+      color: #D3DCE6;
+    }
+
+    .card .thirdChild{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+      color: #D3DCE6;
+      margin-bottom: -1.4em;
+    }
+  
+    .dots span{
+      font-size: 24px;
+    }
+
+    .details{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+
+    .date{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-content: space-between;
+    }
+
+    .smallHeadings{
+      width: 30px;
+      word-wrap: break-word;
+      font-size: 7px;
+      font-weight: lighter;
+      text-transform: uppercase;
+      margin-top: 3em;
+      color: hsl(215, 6%, 37%);
+    }
+
+    .logo{
+      height: 17px;
+    }
+
+    @media screen and (max-width: 768px) {
+      .card{
+        width: 340px;
+      }
+    }
+  </style>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+  <div id="app">
+    <div class="card">
+      <div class="firstChild" >
+        <img src="Vector.png" class="logo" />
+        <img v-if="lock" src="open.svg" @click="toggleLock()"/>
+        <img v-else src="lock.svg" @click="toggleLock()"/>
+      </div>
+
+      <div class="secondChild">
+
+        <div v-if="lock">
+          <span>9</span>
+          <span>7</span>
+          <span>8</span>
+          <span>4</span>
+        </div>
+        <div v-else class="dots">
+          <span>&bull;</span>
+          <span>&bull;</span>
+          <span>&bull;</span>
+          <span>&bull;</span>
+        </div>
+
+        <div v-if="lock">
+          <span>9</span>
+          <span>7</span>
+          <span>8</span>
+          <span>4</span>
+        </div>
+        <div v-else class="dots">
+          <span>&bull;</span>
+          <span>&bull;</span>
+          <span>&bull;</span>
+          <span>&bull;</span>
+        </div>
+
+        <div v-if="lock">
+          <span>9</span>
+          <span>7</span>
+          <span>8</span>
+          <span>4</span>
+        </div>
+        <div v-else class="dots">
+          <span>&bull;</span>
+          <span>&bull;</span>
+          <span>&bull;</span>
+          <span>&bull;</span>
+        </div>
+
+        <div>
+          <span>9</span>
+          <span>7</span>
+          <span>8</span>
+          <span>4</span>
+        </div>
+
+      </div>
+
+      <div class="thirdChild">
+        <div>
+          <h5>Cardholder Name</h5>
+        </div>
+
+        <div class="details">
+          <div class="date">
+            <div class="smallHeadings" style="margin-right: -0.1em;">
+              VALID THRU
+            </div>
+            <h5>10/12</h5>
+          </div>
+  
+          <div class="date">
+            <div class="smallHeadings" style="margin: 4em -1.2em 0 3em;">
+              CVV
+            </div>
+            <h4>&bull;&bull;&bull;</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        lock: true
+      },
+      methods: {
+        toggleLock: function () {
+          this.lock = !this.lock;
+        }
+      }
+    })
+  </script>
+</body>
+</html>
